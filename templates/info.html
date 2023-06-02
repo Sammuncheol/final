@@ -1,0 +1,70 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>alert("{{messages[-1]}}")</script>
+    {%endif%}
+{%endwith%}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI문철</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_info.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro_bg">
+            <div class="header">
+                <h1><a href="/">AI문철</a></h1>
+                <div class="nav">
+                    <ul>
+                        {%if userid%}
+                            {%if userid == "admin" %}
+                                 <li><a href="/admin">관리자 페이지</a></li>
+                                 <li><a href="/logout">로그아웃</a></li>
+                            {%else%}
+                                 <li><a href="/logout">로그아웃</a></li>
+                            {%endif%}
+                        {%else%}
+                            <li><a href="/loginpage">로그인</a></li>
+                        {%endif%}
+                        <li><a href="/submit">영상업로드</a></li>
+                        <li><a href="/info">마이페이지</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      <div class="main_text0">
+        <div class="container-info">
+          <div class="content" style="text-align:center;">
+            <header>회원 정보</header>
+            <div class="temp-box">
+              <br><h3 style="display:inline; padding-top: 50px;">{{userid}}</h3>님의 회원정보입니다.
+    
+              <br><hr style="width: 80%; size: 3px; color: black; margin: auto;" /><br>
+                <div>
+                <form method="POST" action="/delete" enctype="multipart/form-data">
+                {% for content in contents %}
+                <h3>{{content[0]}}</h3> <br>
+                <img src="{{ content[1] }}" style="max-width: 256px"> 
+                <br>{{content[3]}} <br>{{content[2]}} <h3>{{content[4]}}</h3><br>
+                <input type="checkbox" name="deletecheck" value="{{content[0]}}"><br><br>
+                <hr width="50%" align="center" size="1px" /><br>
+                {% endfor %}
+                <br><input type="submit" value="삭제"><br><br>
+                </form>
+                </div>
+            </div>
+            
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

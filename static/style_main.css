@@ -1,0 +1,110 @@
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  border-collapse: collapse;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  background-size: auto;
+}
+
+.intro_bg{
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("images/car.jpg");
+  background-position: center center;
+  background-size: cover;
+  width:100vw;
+  height: 500px;
+}
+
+.container .header{
+  width: 1280px;
+  height: 80px;
+  margin:0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .header h1 a{
+  text-decoration: none;
+}
+
+.container .nav ul li{
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.container .nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+.container .nav ul li a:hover{
+  color: aqua;
+}
+
+.container .info{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -150%);
+  color: black;
+  text-align: center;
+}
+
+.container .info h2{
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+.container .info p{
+  font-size: 16px;
+}
+
+/* main_text0 */
+
+.main_text0{
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  background-color: #dadada;
+}
+
+.main_text0 .icons{
+  display: flex;
+  width: 900px;
+  height: 183.2px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.icons > li{
+  flex: 1;
+  background: white;
+  height: 183.2px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.icons > li > .icon_img{
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.icons > li:not(:last-child){
+  margin-right: 30px;
+}
+
+.contents1_bold{
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+}

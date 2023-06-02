@@ -1,0 +1,56 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>alert("{{messages[-1]}}")</script>
+    {%endif%}
+{%endwith%}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI문철</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_login.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro_bg">
+            <div class="header">
+                <h1><a href="/">AI문철</a></h1>
+                <div class="nav">
+                    <ul>
+                        <li><a href="/loginpage">로그인</a></li>
+                        <li><a href="/submit">영상업로드</a></li>
+                        <li><a href="/info">마이페이지</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      <div class="main_text0">
+        <div class="container-login">
+          <div class="top-header">
+            <header>회원가입</header>
+          </div>
+          <form method="POST" action="/register" enctype="multipart/form-data">
+          <div class="input-field">
+            <input type="text" class="input" name="id" placeholder="아이디" required>
+          </div>
+          <div class="input-field">
+            <input type="password" class="input" name="pw" placeholder="비밀번호" required>
+          </div>
+          <div class="input-field">
+            <input type="password" class="input" name="pwcheck" placeholder="비밀번호 확인" required>
+          </div>
+          <div class="input-field">
+            <input type="submit" class="submit" value="가입하기">
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

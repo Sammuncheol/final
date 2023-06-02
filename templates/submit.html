@@ -1,0 +1,67 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>alert("{{messages[-1]}}")</script>
+    {%endif%}
+{%endwith%}
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI문철</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_submit.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro_bg">
+            <div class="header">
+                <h1><a href="/">AI문철</a></h1>
+                <div class="nav">
+                    <ul>
+                        {%if userid%}
+                            {%if userid == "admin" %}
+                                 <li><a href="/admin">관리자 페이지</a></li>
+                                 <li><a href="/logout">로그아웃</a></li>
+                            {%else%}
+                                 <li><a href="/logout">로그아웃</a></li>
+                            {%endif%}
+                        {%else%}
+                            <li><a href="/loginpage">로그인</a></li>
+                        {%endif%}
+                        <li><a href="/submit">영상업로드</a></li>
+                        <li><a href="/info">마이페이지</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main_text0">
+          <div class="container-submit">
+            <div class="content" style="text-align:center;">
+              <header>영상 업로드</header>
+              <div class="temp-box">
+                <form method="POST" action="/upload" enctype="multipart/form-data">
+                  <br><br><br><br><input type="file" name="file"><br><br><br><br><br><br>
+                  <h3>사고 발생 시간대를 10초 내외로 입력해 주세요</h3><br><br>
+                  <input type="text" class="input_t" name="start_h" placeholder="시" required> :
+                  <input type="text" class="input_t" name="start_m" placeholder="분" required> :
+                  <input type="text" class="input_t" name="start_s" placeholder="초" required> : ~
+                  <input type="text" class="input_t" name="end_h" placeholder="시" required> :
+                  <input type="text" class="input_t" name="end_m" placeholder="분" required> :
+                  <input type="text" class="input_t" name="end_s" placeholder="초" required> <br><br><br>
+                  <input type="submit" class="subbut" value="Upload">
+                  </form><br><br>
+			영상 길이에 따라 2분 내외로 소요됩니다.<br><br>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
+

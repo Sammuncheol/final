@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI문철</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style_admin.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="intro_bg">
+      <div class="header">
+        <h1><a href="/">AI문철</a></h1>
+        <div class="nav">
+          <ul>
+            <li><a href="/admin">관리자 페이지</a></li>
+            <li><a href="/logout">로그아웃</a></li>
+            <li><a href="/submit">영상업로드</a></li>
+            <li><a href="/info">마이페이지</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main_text0">
+      <div class="container-info">
+        <div class="content" style="text-align:center;">
+          <header>관리자 페이지</header>
+          <div class="temp-box">
+            <br>
+            ///<h3 style="display:inline; padding-top: 50px;">관리자 페이지입니다.</h3>
+
+            ////<br>
+            ///<hr style="width: 80%; size: 3px; color: black; margin: auto;" /><br>
+
+            <form method="POST" action="/admin_delete" enctype="multipart/form-data">
+              {% for uid, video_info in all_information %}
+              <h3>{{uid}}</h3>
+              {%if video_info == [[], [], [], []]%}
+              nothing<br>
+              {%else%}
+              {% for i in range(video_info[0]|length)%}
+              {% for j in range(video_info|length)%}
+              {% if j == 0 %}
+              {{video_info[j][i]}}<br>
+              <input type="checkbox" name="deletecheck" value="file_name={{video_info[j][i]}}, uid={{uid}}"> <br><br>
+              {% else %}
+              {% if j == 1 %}
+              <img src={{ video_info[j][i] }} style="max-width: 256px"> <br>
+              {% else %}
+              {{video_info[j][i]}}<br>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+              <br><hr style="width: 50%; margin: auto; size: 1px;" /><br>
+              {% endfor %}
+              {% endif %} <br>
+
+              <br>
+              <hr style="width: 80%; margin: auto; size: 1px;" />
+              {% endfor %} <br>
+
+              <br>
+            </form>
+
+
+          </div>
+          <br><input type="submit" value="삭제">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

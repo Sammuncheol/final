@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI문철</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_main.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro_bg">
+            <div class="header">
+                <h1><a href="/">AI문철</a></h1>
+                <div class="nav">
+                    <ul>
+                        {%if userid%}
+                            {%if userid == "admin" %}
+                                 <li><a href="/admin">관리자 페이지</a></li>
+                                 <li><a href="/logout">로그아웃</a></li>
+                            {%else%}
+                                 <li><a href="/logout">로그아웃</a></li>
+                            {%endif%}
+                        {%else%}
+                            <li><a href="/loginpage">로그인</a></li>
+                        {%endif%}
+                        <li><a href="/submit">영상업로드</a></li>
+                        <li><a href="/info">마이페이지</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h2>차대차 사고 과실 비율 분석 AI</h2>
+            <p>AI문철이 블랙박스 영상을 통해 교통사고 과실 비율을 알려드립니다</p>
+        </div>
+        <div class="main_text0">
+            <ul class="icons">
+                <li>
+                    <div class="icon_img">
+                        <img src="{{url_for('static', filename='images/judge.png')}}" style="width:80px; height:auto">
+                    </div>
+                    <div class="contents1_bold">정확한 판단</div>
+                </li>
+                <li>
+                    <div class="icon_img">
+                        <img src="{{url_for('static', filename='images/reduce.png')}}" style="width:80px; height:auto">
+                    </div>
+                    <div class="contents1_bold">시간 비용 절감</div>
+                </li>
+                <li>
+                    <div class="icon_img">
+                        <img src="{{url_for('static', filename='images/simplify.png')}}" style="width:80px; height:auto">
+                    </div>
+                    <div class="contents1_bold">분쟁해결절차 단순화</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
